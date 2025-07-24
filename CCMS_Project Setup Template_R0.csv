@@ -1,0 +1,46 @@
+"Section","Field Name","Description / Example","File Name (EPC Agreements)",,,
+,,,"Agartala  Udaipur (Mapping)","KAR-WAL_NH4 (Lot 5 to 20)","MEDAK- SIDDIPET (Lot 3)","Nakrekal-Sagar EPC agreement (Lot 1 and 2)"
+"A. Project Details","Project ID","Auto-generated or manually entered unique code","Not Applicable","Not Applicable","Not Applicable","Not Applicable"
+,"Project Name","Full name (e.g., “Vadugapatti–Therkuvenganallur NH-744 EPC”)","Highlighted in yellow, refer to page 1/325","Highlighted in yellow, refer to page 1/412","Highlighted in yellow, refer to page 1/515","Highlighted in yellow, refer to page 1/786"
+,"Name of the Authority","E.g., NHAI, MoRTH, RVNL","Highlighted in yellow, refer to page 1/325 & 12/325
+Additionally, page 129 can be referred as well - not highlighted.","Highlighted in yellow, refer to page 1/412.","Highlighted in yellow, refer to page 1/515.","Highlighted in yellow, refer to page 1/786"
+,"Name of the Contractor","eg KMC, SLMI, SEW, etc. All JV members, if it is a JV","Highlighted in yellow, refer to page 1/325 & 13/325
+Additionally, page 129 can be referred as well - not highlighted.","Highlighted in yellow, refer to page 1/412.","Highlighted in yellow, refer to page 1/515.","Highlighted in yellow, refer to page 1/786"
+,"Name of the AE/ IE/ PMC/ GC","Egis, WSP, SA Infra etc.","Not Applicable pertaining to this Contract Document","Not Applicable pertaining to the Contract Document","Not Applicable pertaining to the Contract Document","Not Applicable pertaining to the Contract Document"
+,"USER","Authroity/ Contractor/ Consultant","Contractor","Contractor","Contractor","Contractor"
+,"Contract Type","EPC / Item Rate / HAM/ BOT/ Annuity","EPC","EPC","EPC","EPC"
+,"Location","State, District, Towns covered","This is mentioned in the project name itself","This is mentioned in the project name","This is mentioned in the project name","This is mentioned in the project name"
+,"Start Date","As per Agreement","The agreement date is highlighted in yellow, refer to page 12/325.
+However, the Start Date is the Appointed Date of the Project which will be given at a later date through a letter from the Authority.","The agreement date is highlighted in yellow, refer to page 13/412.
+However, the Start Date is the Appointed Date of the Project which will be given at a later date through a letter from the Authority.","The agreement date is highlighted in yellow, refer to page 11/515.
+However, the Start Date is the Appointed Date of the Project which will be given at a later date through a letter from the Authority.","The agreement date is highlighted in yellow, refer to page 14/786.
+However, the Start Date is the Appointed Date of the Project, which will be given at a later date through a letter from the Authority."
+,"End Date","Original or updated planned completion","The end date of the construction phase will be calculated based on the Schedule J of the EPC Agreement.
+The same is highlighted in yellow. Refer to page 221/325. This is to be calculated from AD+X days, as specified in Sch.J.","The end date of the construction phase will be calculated based on the Schedule J of the EPC Agreement.
+The same is highlighted in yellow. Refer to page 209/412. This is to be calculated from AD+X days, as specified in Sch.J.","The end date of the construction phase will be calculated based on the Schedule J of the EPC Agreement.
+The same is highlighted in yellow. Refer to page 342/515. This is to be calculated from AD+X days, as specified in Sch.J.","The end date of the construction phase will be calculated based on the Schedule J of the EPC Agreement.
+The same is highlighted in yellow. Refer to page 297/786. This is to be calculated from AD+X days, as specified in Sch.J."
+,"Contract Value (₹ Cr)","Total Contract Price (excluding GST)","Refer to Page No.77/325, which is Article 19.1.1","Refer to Page No.77/412, which is Article 19.1.1","Refer to Page No.103/412, which is Article 19.1.1","Refer to Page No.98/786, which is Article 19.1"
+,"Funding Agency","e.g., ADB, JICA, Govt. of India","Not Applicable pertaining to this Contract Document","Not Applicable pertaining to this Contract Document","Not Applicable pertaining to this Contract Document","Not Applicable pertaining to this Contract Document"
+,"Contract Agreement Upload","Upload PDF or link","-","-","-","-"
+,"Addenda / Amendments Upload","Upload scanned copies or links","-","-","-","-"
+"B. Roles & Access Setup","Project Manager (Internal)","Name & email","-","-","-","-"
+,"Document Control Manager","Name & email","-","-","-","-"
+,"Contract Manager","Name & email","-","-","-","-"
+,"Technical Lead","Name & email","-","-","-","-"
+,"Other Users to be added","List names, emails, and roles","-","-","-","-"
+"C. Contract Document Structure","Milestones Defined?","Yes / No – If yes, upload or list","Yes, Please refer to the Sch.J (Pg.221-222) of the EPC Agt.","Yes, Please refer to the Sch.J (Pg.209-210) of the EPC Agt.","Yes, Please refer to the Sch.J (Pg.341-342) of the EPC Agt.","Yes, Please refer to the Sch.J (Pg.296-297) of the EPC Agt."
+,"Payment Schedule","Upload or describe (e.g., milestone-based or monthly IPC)","Refer to the Article 19.3 Pg.79/325 for the Payment Schedule.
+Subsequently, Sch.H (Pg.212) may also be seen.","Refer to the Article 19.3 Pg.79/412 for the Payment Schedule.
+Subsequently, Sch.H (Pg.197) may also be seen.","Refer to the Article 19.3 Pg.105 and 106/412 for the Payment Schedule.
+Subsequently, Sch.H (Pg.325) may also be seen.","Refer to the Article 19.3 Pg.100 for the Payment Schedule.
+Subsequently, Sch.H (Pg.271) may also be seen."
+,"Issues","Template by i2R based on type of Contract","-","-","-","-"
+,"Categories","Template by i2R based on type of Contract","-","-","-","-"
+,"Clause Mapping","Template by i2R (initial vesions), later to be developed on its own","-","-","-","-"
+"D. Reporting / Alerts","Critical Deadlines to Track","e.g., responses, Bank Guarantees, NCRs, PCOD etc.","-","-","-","-"
+,"Weekly Summary","Required - yes/ no","-","-","-","-"
+,"Email Alerts Required?","Required - yes/ no","-","-","-","-"
+"E. Tags & Labels","Default Issue Categories","Time, Cost, Scope, Design Change, etc.","-","-","-","-"
+,"Documents Types in Use","Letter, MOM, Site Memo, etc.","-","-","-","-"
+,"Custom Labels (if any)","User-defined tags for letters","-","-","-","-"
