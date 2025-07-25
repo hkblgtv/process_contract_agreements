@@ -153,19 +153,37 @@ def extract_data_with_llm(pdf_path, prompt):
 def calculate_end_date(start_date_str, duration_str):
     """
     Calculates the end date based on a start date string and a duration string.
-    Handles durations in days or months.
+    Handles various date formats and durations in days or months.
+    Outputs the date in DD-MM-YYYY format.
     """
-    try:
-        # Parse start date
-        start_date = datetime.strptime(start_date_str, "%B %d, %Y") # e.g., October 15, 2018
-    except ValueError:
+    start_date = None
+    # Clean up the date string by removing ordinal suffixes (st, nd, rd, th) and commas
+    start_date_str = re.sub(r"(\d+)(st|nd|rd|th)", r"\1", start_date_str.replace(',', ''), flags=re.IGNORECASE)
+
+
+    # List of possible date formats
+    date_formats = [
+        "%d-%m-%Y",      # 29-12-2022
+        "%d %B %Y",      # 16 March 2015
+        "%B %Y",         # October 2018 (day will be 1)
+        "%Y-%m-%d",      # 2022-12-29
+    ]
+
+    for fmt in date_formats:
         try:
-            start_date = datetime.strptime(start_date_str, "%Y-%m-%d") # Another common format
+            start_date = datetime.strptime(start_date_str, fmt)
+            # If the format is just month and year, default to the first day
+            if "%d" not in fmt:
+                start_date = start_date.replace(day=1)
+            break  # Exit loop if parsing is successful
         except ValueError:
-            return "Invalid Start Date Format"
+            continue
+
+    if not start_date:
+        return "Invalid Start Date Format"
 
     # Parse duration
-    duration_match = re.match(r"(\d+)\s*(day|month)s?", duration_str, re.IGNORECASE)
+    duration_match = re.search(r"(\d+)\s*(day|month)s?", duration_str, re.IGNORECASE)
     if duration_match:
         value = int(duration_match.group(1))
         unit = duration_match.group(2).lower()
@@ -173,19 +191,25 @@ def calculate_end_date(start_date_str, duration_str):
         if unit == "day":
             end_date = start_date + timedelta(days=value)
         elif unit == "month":
-            # For months, add to year and month, then adjust day if necessary
-            year = start_date.year + value // 12
-            month = start_date.month + value % 12
-            if month > 12:
-                year += 1
-                month -= 12
-            # Handle cases where day is greater than days in new month
-            day = min(start_date.day, (datetime(year, month + 1, 1) - timedelta(days=1)).day if month < 12 else 31)
+            # Add months carefully
+            total_months = start_date.month + value
+            year = start_date.year + (total_months - 1) // 12
+            month = (total_months - 1) % 12 + 1
+            
+            # Find the last day of the target month
+            next_month = month + 1
+            next_year = year
+            if next_month > 12:
+                next_month = 1
+                next_year += 1
+            last_day_of_month = (datetime(next_year, next_month, 1) - timedelta(days=1)).day
+            
+            day = min(start_date.day, last_day_of_month)
             end_date = datetime(year, month, day)
         else:
             return "Invalid Duration Unit"
         
-        return end_date.strftime("%Y-%m-%d")
+        return end_date.strftime("%d-%m-%Y")
     else:
         return "Invalid Duration Format"
 
@@ -305,7 +329,11 @@ def main():
         ]
 
     # Write header to CSV file
-    pd.DataFrame(columns=output_columns).to_csv(output_csv_file, mode='a', index=False)
+    import csv
+    # Write header to CSV file
+    with open(output_csv_file, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(output_columns)
 
     pdf_files = [f for f in os.listdir('.') if f.lower().endswith('.pdf') and not f.lower().endswith('_short.pdf')]
 
@@ -347,10 +375,12 @@ def main():
             row_data["File Name"] = pdf_file # Ensure filename is always present
             
             # Remove the original 'Location' key if it exists and was flattened
-            if "Location" in extracted_data:
-                del extracted_data["Location"]
+            if "Location" in row_data:
+                del row_data["Location"]
 
-            pd.DataFrame([row_data]).to_csv(output_csv_file, mode='a', header=False, index=False)
+            with open(output_csv_file, 'a', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([row_data.get(col, "") for col in output_columns])
             print(f"  - Data for {pdf_file} appended to {output_csv_file}")
 
     print(f"Script finished. Final data saved to {output_csv_file}")
