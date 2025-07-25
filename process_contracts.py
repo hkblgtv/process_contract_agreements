@@ -201,10 +201,14 @@ def process_contract(contract_pdf_file, llm_prompt_fields, output_columns):
     short_pdf_path = None
 
     try:
-        # Step 1: Create short PDF
-        pages_to_keep = find_important_pages(contract_pdf_file)
-        print(f"  - Identified {len(pages_to_keep)} important pages: {[p + 1 for p in pages_to_keep]}")
-        short_pdf_path = create_short_pdf(contract_pdf_file, pages_to_keep)
+        short_pdf_path = os.path.splitext(contract_pdf_file)[0] + "_short.pdf"
+        if os.path.exists(short_pdf_path) and os.path.getsize(short_pdf_path) > 0:
+            print(f"  - Reusing existing short PDF: {short_pdf_path}")
+        else:
+            # Step 1: Create short PDF
+            pages_to_keep = find_important_pages(contract_pdf_file)
+            print(f"  - Identified {len(pages_to_keep)} important pages: {[p + 1 for p in pages_to_keep]}")
+            short_pdf_path = create_short_pdf(contract_pdf_file, pages_to_keep)
 
         print(f"  - Short PDF path: {short_pdf_path}") # Added for debugging
         if short_pdf_path:
@@ -301,7 +305,7 @@ def main():
         ]
 
     # Write header to CSV file
-    pd.DataFrame(columns=output_columns).to_csv(output_csv_file, index=False)
+    pd.DataFrame(columns=output_columns).to_csv(output_csv_file, mode='a', index=False)
 
     pdf_files = [f for f in os.listdir('.') if f.lower().endswith('.pdf') and not f.lower().endswith('_short.pdf')]
 
